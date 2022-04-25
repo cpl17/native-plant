@@ -1,6 +1,4 @@
-Repo Includes: 
+Repo Includes:
 
-**ERA_PA** - The Excel Sheet containing records on plants native to the Chester County area, indexed by USDA Symbol  
-
-**main.py**  - The script scrapes Wildflower.org for missing information related to Bloom Color, Soil Moisture, Height, Sun Exposure, Bloom Period. The scraped values
-are stored in a dictionary, written to a Pandas DataFrame, and used to update a copy of the original data. Finally, the DataFrame is written to an Excel sheet. 
+* Aggregations: Collections of notebooks where I performed string aggregations on a few of the sheets and performed some data quality checks
+* Scraping: All the relevants scripts and notebooks for the web scraping I performed

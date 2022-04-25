@@ -109,7 +109,7 @@ idx = data_relevant[fields_wth_missing].isna().any(axis=1)
 symbols = data_relevant.loc[idx,"USDA Symbol"].to_list()
 
 
-# Empty dict that will be populated with the a dict for each symbol
+# Empty dict that will be populated with a dict for each symbol
 plant_dict = defaultdict(dict)
 
 counter = 0
@@ -124,7 +124,7 @@ for symbol in symbols:
     soup = BeautifulSoup(page,features='lxml')
     stuff = soup.find_all("div",class_="section")
 
-    # When the symbol is not found on the website it returns a page with 2 divs matching the previous criteria
+    # When the symbol is not found on the website it returns a page with 2 divs matching the searched for criteria
 
     if len(stuff) > 2:
 
@@ -159,9 +159,9 @@ for col,fun in list(zip(data.columns,list_of_funcs)):
 
 data.to_csv("scraped_data.csv")
 
-data = pd.read_csv("scraped_data.csv")
+# data = pd.read_csv("scraped_data.csv")
 
-# Join scraped data with original data; creates duplicated columns _x for orginal _y for data from scraped 
+# Join scraped data with original data; creates duplicated columns _x for orginal, _y for data from scraped 
 
 data = data.reset_index().rename({"index":"USDA Symbol"},axis=1)
 temp = data_relevant.merge(data,on="USDA Symbol",how='left')
@@ -180,8 +180,6 @@ final.columns = identifiers + fields_wth_missing
 
 
 # Replace columns in original df 
-
-# data_full.loc[:,identifiers+fields_wth_missing] = final
 
 final.to_excel("FINAL.xlsx")
 

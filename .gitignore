@@ -1,9 +1,13 @@
 #Project Files 
 
 Data/
+<<<<<<< HEAD
 Dev/
 .vs
 Local_Store_Catalog_Automation/'PA Wildflower Database.xlsx'
+=======
+.vs/
+>>>>>>> 5ffe97b23ac7955630b24d3d749e5e3f268ac3e2
 
 
 # Byte-compiled / optimized / DLL files

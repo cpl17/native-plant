@@ -2,7 +2,7 @@ import pandas as pd
 import os
 
 #The source database
-era_pa = pd.read_excel("PA Wildflower Database.xlsx",sheet_name="ERA_PA")
+era_pa = pd.read_excel("./Data/PA Wildflower Database.xlsx",sheet_name="ERA_PA")
 era_pa = era_pa[["Scientific Name","Common Name","USDA Symbol"]]
 
 for col in era_pa:
@@ -15,9 +15,9 @@ list_of_dfs = []
 #For each file -> read file into string,check common and scientific names for each plant against the string. Using acopy of the 
 # source dataframe, remove all non-matched values,  and append to a list
 
-for file in os.listdir("./TextFiles"):
+for file in os.listdir("./Data/TextFiles"):
 
-    full_path = "./TextFiles/" + file
+    full_path = "./Data/TextFiles/" + file
 
     with open(full_path,encoding='unicode_escape') as f:
         string = f.read()
@@ -54,15 +54,14 @@ for file in os.listdir("./TextFiles"):
 #A long df with entries SYMBOL NURSERY URL. Note: URLS are the nursery urls NOT the 
 # urls used for the http requests. 
 nursery_matches = pd.concat(list_of_dfs)
-nursery_matches.to_csv("Local_Long.csv")
 
-nursery_info = pd.read_excel("PA Wildflower Database.xlsx",sheet_name="Local_Catalog_URLS")
+nursery_info = pd.read_excel("./Data/PA Wildflower Database.xlsx",sheet_name="Local_Catalog_URLS")
 nursery_info = nursery_info.loc[(nursery_info["Solved"] == "Yes"),["Nursery","Nursery URL"]].drop_duplicates(subset="Nursery")
 mapping = nursery_info.set_index("Nursery").to_dict()["Nursery URL"]
 
 nursery_matches["URL"] = nursery_matches["Nursery"].map(mapping)
 nursery_matches = nursery_matches[["USDA Symbol","Nursery","URL"]]
-nursery_matches.to_csv("Local_Long.csv")
+nursery_matches.to_csv("./Data/Local_Long.csv")
 
 #Aggegrate along symbol to get SYMBOL URLS COUNT df. 
 nursery_matches["URL"] = nursery_matches["Nursery"].map(mapping)
@@ -72,12 +71,12 @@ f = lambda x: ', '.join(map(str, set(x)))
 local_agg = df.groupby("USDA Symbol").agg({"URL":[f,len]})
 local_agg.reset_index(inplace=True)
 local_agg.columns = ["USDA Symbol","URLS","COUNT"]
-local_agg.to_csv("Local_Agg.csv")
+local_agg.to_csv("./Data/Local_Agg.csv")
 
 
 #Count dict -> DataFrame
 count_df = pd.DataFrame(index = count_dict.keys(), data=count_dict.values(),columns=["Counts"])
-count_df.to_csv("Counts.csv")
+count_df.to_csv("./Data/Counts.csv")
     
     
 

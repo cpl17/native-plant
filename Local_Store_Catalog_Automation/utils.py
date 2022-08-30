@@ -20,10 +20,10 @@ def write_to_text(nursery_name,append,text):
     """Helper function to either write to a new file or append to an existing text file"""
 
     if append:       
-        with open(f"TextFiles/{nursery_name}.txt","a",encoding='utf-8') as f:
+        with open(f"./Data/TextFiles/{nursery_name}.txt","a",encoding='utf-8') as f:
             f.write(text)
     else:
-        with open(f"TextFiles/{nursery_name}.txt","w",encoding='utf-8') as f:
+        with open(f"./Data/TextFiles/{nursery_name}.txt","w",encoding='utf-8') as f:
             f.write(text)
 
 
@@ -170,27 +170,32 @@ def get_text_file_excel(url,nursery_name,append):
 
     multi_sheet_file = pd.ExcelFile("tmp/catalog.xlsx")
     excel_sheet_names = multi_sheet_file.sheet_names
-
+    
+    
+    text = ""
 
     for name in excel_sheet_names:
         df = pd.read_excel(multi_sheet_file,sheet_name=name)
 
-
-        df.dropna(thresh=3,inplace=True)
+        df.dropna(thresh=3,inplace=True)#Two remove Title and other other non-data rows
         df.columns = ["col" + str(i) for i in range(len(df.columns))] #Unamed columns are creating problems
         df = df.astype(str) #This solves a TypeError
-        
+
         df_string= ""
         
         #Column -> list -> concatenated string for each column
         for col in df.columns:
             string = ' '.join(df[col].tolist())
             df_string += string
-
-        text = re.sub(r'\s', ' ', df_string)
-        text = text.lower()
+        
+        text += df_string
+    
+    text = text.lower()
+    
+        
 
     write_to_text(nursery_name,append,text)
+
 
 
 

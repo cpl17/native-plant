@@ -6,7 +6,7 @@ import os
 import shutil
 
 # Dataframe of nurseries and the relevant urls where each availability listing is hosted
-catalog_df = pd.read_excel("PA Wildflower Database.xlsx",sheet_name="Local_Catalog_URLS")
+catalog_df = pd.read_excel("./Data/PA Wildflower Database.xlsx",sheet_name="Local_Catalog_URLS")
 catalog_df = catalog_df.loc[(catalog_df["Solved"] == "Yes"),["Nursery","Catalog URLS"]]
 
 
@@ -23,8 +23,8 @@ if not os.path.exists(os.path.abspath('tmp')):
     os.mkdir("tmp")
 
 # Create a folder for final text files to be written to
-if not os.path.exists(os.path.abspath('TextFiles')):
-    os.mkdir("TextFiles")
+if not os.path.exists(os.path.abspath('Data/TextFiles')):
+    os.mkdir("Data/TextFiles")
 
 
 # Iterate though the catalog dictionary. If there is a normal file extension (pdf, html etc) then the url
@@ -48,7 +48,7 @@ for nursery,urls in catalog_dict.items():
         #source
         if i > 0:
             append = True
-            with open(f"TextFiles/{nursery}.txt","a",encoding='utf-8') as f:
+            with open(f"Data/TextFiles/{nursery}.txt","a",encoding='utf-8') as f:
                 f.write("\n\nNew File\n\n")
     
          
@@ -74,11 +74,14 @@ for nursery,urls in catalog_dict.items():
         elif extension == "doc":
             get_text_file_doc(url,nursery,append)
         
+        elif extension == "xlsx":
+            get_text_file_excel(url,nursery,append)
+        
         ##Web Pages##
         elif extension.find("/") != -1:
             get_text_file_html(url,nursery,append)
         else:
-            print(extension)
+            print(f"{nursery} not being caught")
             
 
 

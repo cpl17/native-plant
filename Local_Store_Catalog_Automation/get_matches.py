@@ -12,7 +12,7 @@ for col in era_pa:
 count_dict = {}
 list_of_dfs = []
 
-#For each file -> read file into string,check common and scientific names for each plant against the string. Using acopy of the 
+#For each file -> read file into string,check common and scientific names for each plant against the string. Using a copy of the 
 # source dataframe, remove all non-matched values,  and append to a list
 
 for file in os.listdir("./Data/TextFiles"):

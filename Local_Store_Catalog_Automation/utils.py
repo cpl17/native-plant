@@ -168,7 +168,7 @@ def get_text_file_excel(url,nursery_name,append):
         f.write(response.content)
 
 
-    multi_sheet_file = pd.ExcelFile("tmp/catalog.xlsx")
+    multi_sheet_file = pd.ExcelFile("tmp/catalog.xlsx",engine='openpyxl')
     excel_sheet_names = multi_sheet_file.sheet_names
     
     

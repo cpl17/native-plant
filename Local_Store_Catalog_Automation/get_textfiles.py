@@ -32,6 +32,8 @@ if not os.path.exists(os.path.abspath('Data/TextFiles')):
 # that don't fall neatly into this logic ()
 for nursery,urls in catalog_dict.items():
 
+
+
     if nursery == "Hungry Hook Bainbridge":
         urls = get_hungry_urls(urls[0])
 
@@ -57,7 +59,9 @@ for nursery,urls in catalog_dict.items():
             get_text_file_pdf(url,nursery,append)
 
         elif (("onedrive" in url) & (nursery == "Archewild Quakertown")):  #Archewild download link
-            get_text_file_excel(url,nursery,append)
+            #LINK BROKEN
+            # get_text_file_excel(url,nursery,append)
+            continue
         
         ##Regular Extensions##
         elif (extension == "pdf"):

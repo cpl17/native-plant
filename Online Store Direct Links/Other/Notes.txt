@@ -1,0 +1,73 @@
+Direct Links:
+
+https://www.ernstseed.com/product/common-yarrow/
+https://www.izelplants.com/acer-pensylvanicum-striped-maple/
+https://midatlanticnatives.com/product-tag/native-wetland-grass/
+https://www.plantmorenatives.com/store/p541/amsonia_tabernaemontana_grande.html#/
+https://www.prairiemoon.com/allium-canadense-wild-garlic-prairie-moon-nursery.html
+https://toadshade.com/Rhus-copallinum-copallinum.html 
+
+Direct Link Success Rate:
+
+Ernst Seed -> Low 
+Izel Plants -> Low
+Toadshade -> High
+PrairieMoon -> Medium
+Midatlanticnatives -> Low 
+PlantMoreNatives.com -> NA
+
+
+
+Search Links:
+Izel Plants ->https://www.izelplants.com/catalogsearch/result/?q= -> high success -> if space must be exact, if use -, then brings up similar searches
+Ernset Seeds -> https://www.ernstseed.com/seed-finder-tool/?s=&CommonName=asdf&ItemNumber=&Botanical_Name=asdf -> high success -> keeps you in the search tool
+Prairie Moon -> https://www.prairiemoon.com/search.html?Search=asdf
+Midatlanticnatives -> https://midatlanticnatives.com/?s=asdf -> very low success
+PlantMoreNatives.com -> None
+Toadshade -> just uses google
+
+
+
+
+
+
+
+Problems:
+
+Differences in common names
+
+
+Edge Cases:
+
+Ernstseed -> https://www.ernstseed.com/product/new-york-aster-albany-pine-bush-ny-ecotype/
+midatlanticnatives -> https://midatlanticnatives.com/product/acorus-americanus-american-sweet-flag-wholesale-native-wetland-plug/
+
+Helianthus 'Lemon Queen' and helianthus ×laetiflorus 
+
+Why we don't blindly use duckduckgo:
+
+https://www.ernstseed.com/wp-content/uploads/2017/01/Wet-Meadows-and-Wetlands-Printable-Planting-Guide.pdf?088375&088375
+
+
+
+
+
+
+
+Edge Case Long:
+
+acorus americanus -> we have and the site has. the duckduckgo links always resolved to an about page. the search link does not work because the search must be 
+exact. the direct link does not work because they add native wetland plant to the end. 
+
+
+Note: 
+
+The search links depend on how smart their search is and how they set it up. 
+
+If they have a built in search tool, the success is high
+
+
+
+Enhancements:
+
+Need to scrape plantmorenatives. Easy to do. Split on '

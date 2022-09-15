@@ -1,8 +1,14 @@
 #Project Files 
-
+.gitignore
 Data/
 Local_Store_Catalog_Automation/'PA Wildflower Database.xlsx'
 .vs/
+
+More_Info/Data/
+Online_Store_Direct_Links/Data/
+Online_Store_Direct_Links/Other/
+
+
 
 
 # Byte-compiled / optimized / DLL files

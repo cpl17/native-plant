@@ -142,8 +142,13 @@ for row in data.iterrows():
 
         #DuckDuckGo gets mad when you do too many of these queries. In this case, the links resolves to an error page or duckduck search results. Both satisify the criteries 
         # and will be marked as a match. Since the url doesn't change, we can notice this using the following logic. 
-        if url in [link,link.lower()]:
-            continue
+        if (link_type == "Duck"):
+
+            if url.strip("https://") == row[1].Root.lower():
+                continue
+
+            if url in [link,link.lower()]:
+                continue
 
         #Assumes if the scientific or common names are on the page sources -> correct site
         if (row[1]["Scientific Name"].lower() in page_source) | (row[1]["Common Name"].lower() in page_source) :
@@ -197,9 +202,9 @@ for row in data.iterrows():
 
 
 data["Final"] = links_final
-data.to_csv("./Data/Online_NEW_Final.csv")
+data.to_csv("./Data/Online_NEW.csv")
 
 
 data["Match"] = (data["Final"] != data["Root"] )
 data.sort_values(by="Root",inplace=True)
-data.to_csv("./Data/Online_NEW_2.csv")
+data.to_csv("./Data/Online_NEW.csv")

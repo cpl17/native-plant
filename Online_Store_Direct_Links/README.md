@@ -9,3 +9,8 @@ The three alternatives are:
 3. Duckduckgo links that redirect to the most popular link from a query on the sites name and the scientific name of the plant. All the previously mentioned problems arise using these links. 
 
 The solution I designed iterates through each of these links. If the page the link resolves to has the root (EnrnstSeed.com) in the url and the plants name on the page, that's the link we'll use. The heirarchy is Direct -> DuckDuckGo -> Search. In the case where none of them work, we use the sites homepage, just as before. 
+
+
+__Update__
+
+The code determining the correct urls is obselete. All online availability data is being regathered using the scripts in Scraping
